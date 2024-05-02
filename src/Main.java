@@ -33,12 +33,12 @@ public class Main {
 
     public static String checkersDistanceDay(int deliveryDistance) {
         int dayDelivery = 1;
-        if (deliveryDistance > 20) {
-            dayDelivery++;
+        if (deliveryDistance > 100) {
+            return "Доставка свыше 100 км не действует";
         } else if (deliveryDistance > 60) {
             dayDelivery++;
-        } else if (deliveryDistance > 100) {
-            return "Доставка свыше 100 км не действует";
+        } else if (deliveryDistance > 20) {
+                dayDelivery++;
         }
         return "Потребуется дней " + dayDelivery;
     }
