@@ -7,9 +7,9 @@ public class Main {
 
     private static void checkYearIsLeapAndPrint(int leapYear) {
         if (leapYear > 1584 && (leapYear % 4 == 0 && leapYear % 100 != 0 || leapYear % 400 == 0)) {
-            System.out.printf("%s год является високосным", leapYear);
+            System.out.println(leapYear + " год является високосным");
         } else {
-            System.out.printf("%s год не является високосным\n", leapYear);
+            System.out.println(leapYear + " год не является високосным");
         }
         System.out.println("task2");
         int clientOs = 1;
@@ -18,37 +18,35 @@ public class Main {
     }
 
     private static void validateDeviceAndYear(int deviceType, int year) {
-        if (deviceType == 1 && year < 2015) {
+        if (deviceType == 0 && year < 2015) {
             System.out.println("Установите облегченную версию приложения для ios по ссылке");
-        } else if (deviceType == 1) {
+        } else if (deviceType == 0) {
             System.out.println("Установите версию приложения для iOS по ссылке\n");
-        } else if (deviceType == 0 && year < 2015) {
+        } else if (deviceType == 1 && year < 2015) {
             System.out.println("Установите облегченную версию приложения для android по ссылке");
-        } else if (deviceType == 0 && year >= 2015) {
+        } else if (deviceType == 1 && year >= 2015) {
             System.out.println("Установите версию приложения для Android по ссылке");
         } else {
             System.out.println("Такая система не поддерживается");
         }
     }
 
-    public static int checkersDistanceDay(int deliveryDistance) {
-        int deliveryDay = 1;
+    public static String checkersDistanceDay(int deliveryDistance) {
+        int dayDelivery = 1;
         if (deliveryDistance > 20) {
-            deliveryDay++;
+            dayDelivery++;
+        } else if (deliveryDistance > 60) {
+            dayDelivery++;
+        } else if (deliveryDistance > 100) {
+            return "Доставка свыше 100 км не действует";
         }
-        if (deliveryDistance > 60) {
-            deliveryDay++;
-        }
-        if (deliveryDistance > 100) {
-            deliveryDay++;
-        }
-        return deliveryDay;
+        return "Потребуется дней " + dayDelivery;
     }
 
     public static void task3() {
         System.out.println("Задача 3");
         int deliveryDistance = 101;
-        int deliveryDay = checkersDistanceDay(deliveryDistance);
+        int deliveryDay = Integer.parseInt(checkersDistanceDay(deliveryDistance));
         if (deliveryDay > 3) {
             System.out.println("Доставка свыше 100 км не действует");
         } else {
