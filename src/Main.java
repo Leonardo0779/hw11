@@ -31,26 +31,30 @@ public class Main {
         }
     }
 
-    public static String checkersDistanceDay(int deliveryDistance) {
-        int dayDelivery = 1;
-        if (deliveryDistance > 100) {
-            return "Доставка свыше 100 км не действует";
-        } else if (deliveryDistance > 60) {
-            dayDelivery++;
-        } else if (deliveryDistance > 20) {
-                dayDelivery++;
-        }
-        return "Потребуется дней " + dayDelivery;
+    public static void main2(String[] args) {
+        printCardDeliveryDays(95);
+        printCardDeliveryDays(900);
     }
 
-    public static void task3() {
-        System.out.println("Задача 3");
-        int deliveryDistance = 101;
-        int deliveryDay = Integer.parseInt(checkersDistanceDay(deliveryDistance));
-        if (deliveryDay > 3) {
-            System.out.println("Доставка свыше 100 км не действует");
+    private static int checkersDistanceDay(int distance) {
+        if (distance <= 20) {
+            return 1;
+        } else if (distance <= 60) {
+            return 2;
+        } else if (distance <= 100) {
+            return 3;
         } else {
-            System.out.println("Потребуется для доставки дней: " + deliveryDay);
+            return -1;
+        }
+    }
+
+    private static void printCardDeliveryDays(int distance) {
+        int days = checkersDistanceDay(distance);
+
+        if (days > 0) {
+            System.out.println("Потребуется дней: " + days);
+        } else {
+            System.out.println("Доставка не осуществляется");
         }
     }
 }
